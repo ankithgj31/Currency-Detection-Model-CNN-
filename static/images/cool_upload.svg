@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#eef3ee"/>
+      <stop offset="100%" stop-color="#d9e6da"/>
+    </linearGradient>
+    <linearGradient id="inkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c2b25"/>
+      <stop offset="100%" stop-color="#0f6b4c"/>
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2fbe8b"/>
+      <stop offset="100%" stop-color="#0f6b4c"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e8cd79"/>
+      <stop offset="100%" stop-color="#b8912f"/>
+    </linearGradient>
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#0f6b4c" flood-opacity="0.25"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect x="14" y="14" width="100" height="100" rx="28" fill="url(#bgGrad)" stroke="#c3d6c5" stroke-width="2" filter="url(#dropShadow)" />
+
+  <rect x="28" y="44" width="72" height="42" rx="8" fill="none" stroke="url(#goldGrad)" stroke-width="2.5" stroke-dasharray="6 3" opacity="0.8" />
+
+  <line x1="34" y1="65" x2="94" y2="65" stroke="url(#goldGrad)" stroke-width="1.5" opacity="0.7" stroke-dasharray="4 2"/>
+
+  <rect x="36" y="38" width="56" height="44" rx="10" fill="url(#inkGrad)" filter="url(#dropShadow)"/>
+
+  <path d="M52 38 L55 33 C56 31 58 30 60 30 L68 30 C70 30 72 31 73 33 L76 38 Z" fill="url(#inkGrad)"/>
+
+  <circle cx="64" cy="60" r="15" fill="#ffffff" opacity="0.95"/>
+  <circle cx="64" cy="60" r="12" fill="url(#emeraldGrad)"/>
+  <circle cx="64" cy="60" r="7" fill="#0c1613"/>
+  <circle cx="61.5" cy="57.5" r="2.5" fill="#ffffff" opacity="0.85"/>
+
+  <g transform="translate(64, 22)">
+    <path d="M0 0 L-8 10 H-4 V18 H4 V10 H8 Z" fill="url(#goldGrad)" filter="url(#glow)"/>
+  </g>
+
+  <path d="M 22 34 L 22 24 L 32 24" fill="none" stroke="url(#emeraldGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 106 34 L 106 24 L 96 24" fill="none" stroke="url(#emeraldGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 22 94 L 22 104 L 32 104" fill="none" stroke="url(#emeraldGrad)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 106 94 L 106 104 L 96 104" fill="none" stroke="url(#emeraldGrad)" stroke-width="3" stroke-linecap="round"/>
+</svg>

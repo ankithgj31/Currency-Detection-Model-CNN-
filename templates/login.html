@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Currency Note Detection</title>
+
+    <!-- Apply saved theme before paint to avoid flash -->
+    <script>
+        (function(){
+            var t = localStorage.getItem("cnd-theme");
+            if(t === "dark"){ document.documentElement.setAttribute("data-theme","dark"); }
+        })();
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body class="login-body">
+
+    <!-- Theme Toggle -->
+    <button id="themeToggle" class="theme-toggle login-theme-toggle" type="button" title="Toggle dark mode">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+    </button>
+
+    <!-- Decorative Currency Notes -->
+
+    <img src="{{ url_for('static', filename='images/note500.png') }}" class="login-note left-note" alt="₹500 Note">
+
+    <img src="{{ url_for('static', filename='images/note2000.png') }}" class="login-note right-note" alt="₹2000 Note">
+
+
+    <div class="login-wrapper">
+
+        <!-- Top Heading Above Login Card -->
+        <header class="login-header-title">
+            <h1><span class="rupee">₹</span> Currency Note Detection</h1>
+            <p>AI-POWERED GENUINE &amp; FAKE NOTE VERIFICATION</p>
+        </header>
+
+        <!-- Login Card -->
+        <div class="login-container">
+
+            <img src="{{ url_for('static', filename='images/logo.png') }}" class="login-logo" alt="Logo">
+
+            <h2>Account Login</h2>
+
+            <p class="login-subtitle">
+                Sign in to access the detection system
+            </p>
+
+        <form action="/login" method="POST">
+
+            <div class="input-group">
+
+                <input type="text" name="username" placeholder="Username" required>
+
+            </div>
+
+            <div class="input-group password-group">
+
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <span id="togglePassword" class="toggle-password" title="Show / Hide Password">
+                    <svg id="eyeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                </span>
+
+            </div>
+
+            <button type="submit">
+
+                Login
+
+            </button>
+
+        </form>
+
+        {% if error %}
+
+        <p class="error">
+
+            {{ error }}
+
+        </p>
+
+        {% endif %}
+
+    </div>
+
+    </div>
+
+    <script>
+
+        const passwordInput = document.getElementById("password");
+        const toggleBtn = document.getElementById("togglePassword");
+        const eyeIcon = document.getElementById("eyeIcon");
+
+        const openEyeSVG = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle>`;
+        const closedEyeSVG = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line>`;
+
+        toggleBtn.addEventListener("click", () => {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                eyeIcon.innerHTML = closedEyeSVG;
+            } else {
+                passwordInput.type = "password";
+                eyeIcon.innerHTML = openEyeSVG;
+            }
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById("themeToggle");
+        themeToggle.addEventListener("click", () => {
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            if (isDark) {
+                document.documentElement.removeAttribute("data-theme");
+                localStorage.setItem("cnd-theme", "light");
+            } else {
+                document.documentElement.setAttribute("data-theme", "dark");
+                localStorage.setItem("cnd-theme", "dark");
+            }
+        });
+
+    </script>
+
+</body>
+
+</html>
